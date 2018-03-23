@@ -4,7 +4,6 @@ import argparse
 import re
 import subprocess
 import csv
-import copy
 import shutil
 
 parser = argparse.ArgumentParser(description = 'Eliminate thumb images and \
@@ -61,11 +60,11 @@ def main():
     print(img_files)
     #Creates subdirectories within each experimental file for each stage position
     for x in range(0,len(stage_pos)):
-    val = x+1
-    try:
-        os.mkdir(os.path.join('/Users/akane/Python_testing/channel_test','Pos%d'%val))
-    except FileExistsError:
-        pass
+        val = x+1
+        try:
+            os.mkdir(os.path.join('/Users/akane/Python_testing/channel_test','Pos%d'%val))
+        except FileExistsError:
+            pass
     #Checks what channels have been used and assigns them to the channels variable
     # Note: names of experiments in save must be two words long, ex "Date_Exp#"
     check_channels = []
@@ -84,8 +83,8 @@ def main():
             val = x+1
             try:
                 os.mkdir(os.path.join('/Users/akane/Python_testing/channel_test','Pos%d'%val,'BF'))
-                except FileExistsError:
-                    pass
+            except FileExistsError:
+                pass
     else:
         for channel in range(0,len(channels)):
             for x in range(0,len(stage_pos)):
