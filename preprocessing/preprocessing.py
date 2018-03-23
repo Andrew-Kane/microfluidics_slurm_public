@@ -143,6 +143,35 @@ def main():
             for key in rename_dict:
             # rename files
                 os.rename(key,rename_dict[key].replace(' ',' '))
+    #Moves files to their appropriate directories
+    new_img_files = [f for f in os.listdir() if '.tif' in f.lower()]
+    stage_assign = re.compile('Pos\d+')
+    for x in range(0,len(new_img_files)):
+        try:
+            shutil.move(os.path.join('/Users/akane/Python_testing/channel_test',
+                                     new_img_files[x]),
+                    os.path.join('/Users/akane/Python_testing/channel_test',
+                                 stage_assign.search(new_img_files[x]).group()[0:].lower(),
+                                                    new_img_files[x]))
+        except FileExistsError:
+            pass
+    for x in range(0,len(stage_pos)):
+        val = x+1
+        os.chdir(os.path.join('/Users/akane/Python_testing/channel_test',
+        'Pos%d'%val))
+    new_img_files = [f for f in os.listdir() if '.tif' in f.lower()]
+    channel_assign = re.compile('c\d+')
+    for x in range (0,len(new_img_files)):
+        try:
+            shutil.move(os.path.join('/Users/akane/Python_testing/channel_test',
+                                   'Pos%d'%val,
+                                    new_img_files[x]),
+                       os.path.join('/Users/akane/Python_testing/channel_test',
+                                   'Pos%d'%val,
+                                   channels[int(channel_assign.search(new_img_files[x]).group()[1:].lower())-1],
+                                    new_img_files[x]))
+        except FileExistsError:
+            pass
 
 if __name__ == '__main__':
     main()
