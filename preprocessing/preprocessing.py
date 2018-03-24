@@ -146,7 +146,7 @@ def main():
             shutil.move(os.path.join(directory,
                                      new_img_files[x]),
                     os.path.join(directory,
-                                 stage_assign.search(new_img_files[x]).group()[0:].lower(),
+                                 stage_assign.search(new_img_files[x]).group()[0:],
                                                     new_img_files[x]))
         except FileExistsError:
             pass
@@ -163,7 +163,7 @@ def main():
                                     new_img_files[x]),
                        os.path.join(directory,
                                    'Pos%d'%val,
-                                   channels[int(channel_assign.search(new_img_files[x]).group()[1:].lower())-1],
+                                   channels[int(channel_assign.search(new_img_files[x]).group()[1:]-1],
                                     new_img_files[x]))
         except FileExistsError:
             pass
