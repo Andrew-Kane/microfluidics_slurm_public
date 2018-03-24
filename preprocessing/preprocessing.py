@@ -154,19 +154,19 @@ def main():
         val = x+1
         os.chdir(os.path.join(directory,
         'Pos%d'%val))
-    new_img_files = [f for f in os.listdir() if '.tif' in f.lower()]
-    channel_assign = re.compile('c\d+')
-    for x in range (0,len(new_img_files)):
-        try:
-            shutil.move(os.path.join(directory,
-                                   'Pos%d'%val,
-                                    new_img_files[x]),
-                       os.path.join(directory,
-                                   'Pos%d'%val,
-                                   channels[int(channel_assign.search(new_img_files[x]).group()[1:])-1],
-                                    new_img_files[x]))
-        except FileExistsError:
-            pass
+        new_img_files = [f for f in os.listdir() if '.tif' in f.lower()]
+        channel_assign = re.compile('c\d+')
+        for x in range (0,len(new_img_files)):
+            try:
+                shutil.move(os.path.join(directory,
+                                       'Pos%d'%val,
+                                        new_img_files[x]),
+                           os.path.join(directory,
+                                       'Pos%d'%val,
+                                       channels[int(channel_assign.search(new_img_files[x]).group()[1:])-1],
+                                        new_img_files[x]))
+            except FileExistsError:
+                pass
 
 if __name__ == '__main__':
     main()
