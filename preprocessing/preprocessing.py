@@ -124,20 +124,20 @@ def main():
                         # rename files
                         os.rename(key,rename_dict[key].replace(' ',' '))
         # Renames if no specified channel.
-        else:
-            stage_re = re.compile('s\d+')
-            stage_IDs = []
-            for x in range(0,len(img_files)):
-                stage_IDs.append(int(stage_re.search(img_files[x]).group()[1:]))
-            renamed_img_files = ['']*len(img_files)
-            for x in range(0,len(renamed_img_files)):
-                renamed_img_files[x] = re.sub('s\d+',
-                                              'Pos%d'%stage_IDs[x]+'_c1BF',
-                                                img_files[x])
-            rename_dict = dict(zip(img_files, renamed_img_files))
-            for key in rename_dict:
-            # rename files
-                os.rename(key,rename_dict[key].replace(' ',' '))
+    else:
+        stage_re = re.compile('s\d+')
+        stage_IDs = []
+        for x in range(0,len(img_files)):
+            stage_IDs.append(int(stage_re.search(img_files[x]).group()[1:]))
+        renamed_img_files = ['']*len(img_files)
+        for x in range(0,len(renamed_img_files)):
+            renamed_img_files[x] = re.sub('s\d+',
+                                          'Pos%d'%stage_IDs[x]+'_c1BF',
+                                            img_files[x])
+        rename_dict = dict(zip(img_files, renamed_img_files))
+        for key in rename_dict:
+        # rename files
+            os.rename(key,rename_dict[key].replace(' ',' '))
     #Moves files to their appropriate directories
     new_img_files = [f for f in os.listdir() if '.tif' in f.lower()]
     stage_assign = re.compile('Pos\d+')
