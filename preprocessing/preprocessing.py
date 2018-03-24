@@ -70,63 +70,59 @@ def main():
     check_channels = []
     for x in range(0,len(img_files)):
         check_channels.append(img_files[x].split('_'))
-    channels = []
-    for x in range(0,len(check_channels)):
-        if check_channels[x][2][2:] in channels:
-            pass
-        else:
-            channels.append(check_channels[x][1][2:])
+    if len(check_channels[0]) >= 5:
+        channels = []
+        for x in range(0,len(check_channels)):
+            if check_channels[x][2][2:] in channels:
+                pass
+            else:
+                channels.append(check_channels[x][1][3:])
+    else:
+        channels = ['BF']
     #Uses values of channels to make directories within each position folder
     #If a single channel is used, it is assumed this is brightfield and makes an appropriate directory       
-    if not channels:
+    for channel in range(0,len(channels)):
         for x in range(0,len(stage_pos)):
             val = x+1
             try:
-                os.mkdir(os.path.join(directory,'Pos%d'%val,'BF'))
+                os.mkdir(os.path.join(directory,'Pos%d'%val,channels[channel]))
             except FileExistsError:
                 pass
-    else:
-        for channel in range(0,len(channels)):
-            for x in range(0,len(stage_pos)):
-                val = x+1
-                try:
-                    os.mkdir(os.path.join(directory,'Pos%d'%val,channels[channel]))
-                except FileExistsError:
-                    pass
     
-    for x in range(0,len(channels)):
-        #If a single channel is used, it is assumed this is brightfield and makes an appropriate directory
-        channel_files = [f for f in os.listdir() if channels[x].lower() in f.lower()] 
-        channel_num = str(x+1)
-        if channel_files != []:
-            #Creates list with files renamed by replacing w in channel with c followed by channel number, starting with 1
-            renamed_channel_files = ['']*len(channel_files)
-            for x in range(0,len(renamed_channel_files)):
-                renamed_channel_files[x] = re.sub('w\d+',
-                                             'c'+ channel_num,
-                                             channel_files[x])
-                #Rearranges channel name so that channel and position are swapped.
-                rearranged_channel_files = []
+    if len(channels) > 1:
+        for x in range(0,len(channels)):
+            #If a single channel is used, it is assumed this is brightfield and makes an appropriate directory
+            channel_files = [f for f in os.listdir() if channels[x].lower() in f.lower()] 
+            channel_num = str(x+1)
+            if channel_files != []:
+                #Creates list with files renamed by replacing w in channel with c followed by channel number, starting with 1
+                renamed_channel_files = ['']*len(channel_files)
                 for x in range(0,len(renamed_channel_files)):
-                    rearranger = renamed_channel_files[x].split('_')
-                    rearranged = list(rearranger)
-                    rearranged[2] = rearranger[3]
-                    rearranged[3] = rearranger[2]
-                    rearranged_channel_files.append('_'.join(rearranged))
-                # Renames files to replace 's' for stage with 'Pos' for proper naming
-                stage_re = re.compile('s\d+')
-                stage_IDs = []
-                for x in range(0,len(rearranged_channel_files)):
-                    stage_IDs.append(int(stage_re.search(rearranged_channel_files[x]).group()[1:]))
-                renamed_pos_files = ['']*len(rearranged_channel_files)
-                for x in range(0,len(rearranged_channel_files)):
-                    renamed_pos_files[x] = re.sub('s\d+',
-                                              'Pos%d'%stage_IDs[x],
-                                                rearranged_channel_files[x])
-                rename_dict = dict(zip(channel_files, renamed_pos_files))
-                for key in rename_dict:
-                    # rename files
-                    os.rename(key,rename_dict[key].replace(' ',' '))
+                    renamed_channel_files[x] = re.sub('w\d+',
+                                                 'c'+ channel_num,
+                                                 channel_files[x])
+                    #Rearranges channel name so that channel and position are swapped.
+                    rearranged_channel_files = []
+                    for x in range(0,len(renamed_channel_files)):
+                        rearranger = renamed_channel_files[x].split('_')
+                        rearranged = list(rearranger)
+                        rearranged[2] = rearranger[3]
+                        rearranged[3] = rearranger[2]
+                        rearranged_channel_files.append('_'.join(rearranged))
+                    # Renames files to replace 's' for stage with 'Pos' for proper naming
+                    stage_re = re.compile('s\d+')
+                    stage_IDs = []
+                    for x in range(0,len(rearranged_channel_files)):
+                        stage_IDs.append(int(stage_re.search(rearranged_channel_files[x]).group()[1:]))
+                    renamed_pos_files = ['']*len(rearranged_channel_files)
+                    for x in range(0,len(rearranged_channel_files)):
+                        renamed_pos_files[x] = re.sub('s\d+',
+                                                  'Pos%d'%stage_IDs[x],
+                                                    rearranged_channel_files[x])
+                    rename_dict = dict(zip(channel_files, renamed_pos_files))
+                    for key in rename_dict:
+                        # rename files
+                        os.rename(key,rename_dict[key].replace(' ',' '))
         # Renames if no specified channel.
         else:
             stage_re = re.compile('s\d+')
