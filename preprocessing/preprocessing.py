@@ -63,15 +63,6 @@ def main():
         os.mkdir(os.path.join(directory,'src_img'))
     except FileExistsError:
         pass
-    for x in range(0,len(img_files)):
-        try:
-            shutil.move(os.path.join(directory,
-                                     img_files[x]),
-                    os.path.join(directory,
-                                 'src_img',
-                                 img_files[x]))
-        except FileExistsError:
-            pass
     new_directory = os.path.join(directory,'src_img')
     #Creates subdirectories within each experimental file for each stage position
     for x in range(0,len(stage_pos)):
