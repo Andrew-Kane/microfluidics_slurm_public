@@ -72,12 +72,12 @@ def main():
                                  img_files[x]))
         except FileExistsError:
             pass
-    directory = os.path.join(directory,'src_img')
+    new_directory = os.path.join(directory,'src_img')
     #Creates subdirectories within each experimental file for each stage position
     for x in range(0,len(stage_pos)):
         val = x+1
         try:
-            os.mkdir(os.path.join(directory,'Pos%d'%val))
+            os.mkdir(os.path.join(new_directory,'Pos%d'%val))
         except FileExistsError:
             pass
     #Checks what channels have been used and assigns them to the channels variable
@@ -100,7 +100,7 @@ def main():
         for x in range(0,len(stage_pos)):
             val = x+1
             try:
-                os.mkdir(os.path.join(directory,'Pos%d'%val,channels[channel]))
+                os.mkdir(os.path.join(new_directory,'Pos%d'%val,channels[channel]))
             except FileExistsError:
                 pass
     
@@ -160,23 +160,23 @@ def main():
         try:
             shutil.move(os.path.join(directory,
                                      new_img_files[x]),
-                    os.path.join(directory,
+                    os.path.join(new_directory,
                                  stage_assign.search(new_img_files[x]).group()[0:],
                                                     new_img_files[x]))
         except FileExistsError:
             pass
     for x in range(0,len(stage_pos)):
         val = x+1
-        os.chdir(os.path.join(directory,
+        os.chdir(os.path.join(new_directory,
         'Pos%d'%val))
         new_img_files = [f for f in os.listdir() if '.tif' in f.lower()]
         channel_assign = re.compile('c\d+')
         for x in range (0,len(new_img_files)):
             try:
-                shutil.move(os.path.join(directory,
+                shutil.move(os.path.join(new_directory,
                                        'Pos%d'%val,
                                         new_img_files[x]),
-                           os.path.join(directory,
+                           os.path.join(new_directory,
                                        'Pos%d'%val,
                                        channels[int(channel_assign.search(new_img_files[x]).group()[1:])-1],
                                         new_img_files[x]))
