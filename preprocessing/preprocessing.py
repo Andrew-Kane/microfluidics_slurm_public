@@ -76,7 +76,7 @@ def main():
     check_channels = []
     for x in range(0,len(img_files)):
         check_channels.append(img_files[x].split('_'))
-    if len(check_channels[0]) >= 5:
+    if len(check_channels[0]) >= 4:
         channels = []
         for x in range(0,len(check_channels)):
             if check_channels[x][2][2:] in channels:
