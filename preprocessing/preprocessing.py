@@ -58,6 +58,21 @@ def main():
     #For confirmation, prints list of stages
     print('list of image files:')
     print(img_files)
+    # Creates data file directory for further processing.
+    try:
+        os.mkdir(os.path.join(directory,'src_img'))
+    except FileExistsError:
+        pass
+    for x in range(0,len(img_files)):
+        try:
+            shutil.move(os.path.join(directory,
+                                     img_files[x]),
+                    os.path.join(directory,
+                                 'src_img',
+                                 img_files[x]))
+        except FileExistsError:
+            pass
+    directory = os.path.join(directory,'src_img')
     #Creates subdirectories within each experimental file for each stage position
     for x in range(0,len(stage_pos)):
         val = x+1
