@@ -37,7 +37,7 @@ def main():
     #For confirmation, prints stage reference file identified and the directory in which it is located
     print('stage reference file: ' + stage_ref)
     print('current working directory: ' + os.getcwd())
-    #Creates a list of all the stage positions in the stege reference file.
+    #Creates a list of all the stage positions in the stage reference file.
     spos_f = open(stage_ref,'r')
     spos_reader = csv.reader(spos_f)
     stage_pos = []
@@ -79,10 +79,10 @@ def main():
     if len(check_channels[0]) >= 4:
         channels = []
         for x in range(0,len(check_channels)):
-            if check_channels[x][2][2:] in channels:
+            if check_channels[x][1][2:] in channels:
                 pass
             else:
-                channels.append(check_channels[x][1][3:])
+                channels.append(check_channels[x][1][2:])
     else:
         channels = ['BF']
     #Uses values of channels to make directories within each position folder
@@ -107,29 +107,29 @@ def main():
                     renamed_channel_files[x] = re.sub('w\d+',
                                                  'c'+ channel_num,
                                                  channel_files[x])
-                    #Rearranges channel name so that channel and position are swapped.
-                    rearranged_channel_files = []
-                    for x in range(0,len(renamed_channel_files)):
-                        rearranger = renamed_channel_files[x].split('_')
-                        rearranged = list(rearranger)
-                        rearranged[1] = rearranger[2]
-                        rearranged[2] = rearranger[1]
-                        rearranged_channel_files.append('_'.join(rearranged))
-                    # Renames files to replace 's' for stage with 'Pos' for proper naming
-                    stage_re = re.compile('s\d+')
-                    stage_IDs = []
-                    for x in range(0,len(rearranged_channel_files)):
-                        stage_IDs.append(int(stage_re.search(rearranged_channel_files[x]).group()[1:]))
-                    renamed_pos_files = ['']*len(rearranged_channel_files)
-                    for x in range(0,len(rearranged_channel_files)):
-                        renamed_pos_files[x] = re.sub('s\d+',
-                                                  'Pos%d'%stage_IDs[x],
-                                                    rearranged_channel_files[x])
-                    rename_dict = dict(zip(channel_files, renamed_pos_files))
-                    for key in rename_dict:
-                        # rename files
-                        os.rename(key,rename_dict[key].replace(' ',' '))
-        # Renames if no specified channel.
+                #Rearranges channel name so that channel and position are swapped.
+                rearranged_channel_files = []
+                for x in range(0,len(renamed_channel_files)):
+                    rearranger = renamed_channel_files[x].split('_')
+                    rearranged = list(rearranger)
+                    rearranged[1] = rearranger[2]
+                    rearranged[2] = rearranger[3]
+                    rearranged_channel_files.append('_'.join(rearranged))
+                # Renames files to replace 's' for stage with 'Pos' for proper naming
+                stage_re = re.compile('s\d+')
+                stage_IDs = []
+                for x in range(0,len(rearranged_channel_files)):
+                    stage_IDs.append(int(stage_re.search(rearranged_channel_files[x]).group()[1:]))
+                renamed_pos_files = ['']*len(rearranged_channel_files)
+                for x in range(0,len(rearranged_channel_files)):
+                    renamed_pos_files[x] = re.sub('s\d+',
+                                              'Pos%d'%stage_IDs[x],
+                                                rearranged_channel_files[x])
+                rename_dict = dict(zip(channel_files, renamed_pos_files))
+                for key in rename_dict:
+                    # rename files
+                    os.rename(key,rename_dict[key].replace(' ',' '))
+    # Renames if no specified channel.
     else:
         stage_re = re.compile('s\d+')
         stage_IDs = []
