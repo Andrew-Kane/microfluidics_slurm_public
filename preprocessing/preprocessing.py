@@ -76,13 +76,13 @@ def main():
     check_channels = []
     for x in range(0,len(img_files)):
         check_channels.append(img_files[x].split('_'))
-    if len(check_channels[0]) >= 4:
+    if len(check_channels[0]) >= 5:
         channels = []
         for x in range(0,len(check_channels)):
-            if check_channels[x][1][2:] in channels:
+            if check_channels[x][2][2:] in channels:
                 pass
             else:
-                channels.append(check_channels[x][1][2:])
+                channels.append(check_channels[x][2][2:])
     else:
         channels = ['BF']
     #Uses values of channels to make directories within each position folder
@@ -112,8 +112,8 @@ def main():
                 for x in range(0,len(renamed_channel_files)):
                     rearranger = renamed_channel_files[x].split('_')
                     rearranged = list(rearranger)
-                    rearranged[1] = rearranger[2]
-                    rearranged[2] = rearranger[1]
+                    rearranged[2] = rearranger[3]
+                    rearranged[3] = rearranger[2]
                     rearranged_channel_files.append('_'.join(rearranged))
                 # Renames files to replace 's' for stage with 'Pos' for proper naming
                 stage_re = re.compile('s\d+')
