@@ -113,7 +113,7 @@ def main():
                     rearranger = renamed_channel_files[x].split('_')
                     rearranged = list(rearranger)
                     rearranged[1] = rearranger[2]
-                    rearranged[2] = rearranger[3]
+                    rearranged[2] = rearranger[1]
                     rearranged_channel_files.append('_'.join(rearranged))
                 # Renames files to replace 's' for stage with 'Pos' for proper naming
                 stage_re = re.compile('s\d+')
