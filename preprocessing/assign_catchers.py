@@ -47,10 +47,10 @@ def find_catchers(timepoint,
                   pos,
                   name_format, # (pos, channel, time, filetype)
                   dest_parent_dir,
-                  experiment_directory,
                   channel,
                   channel_number,
-                  template):
+                  template,
+                  experiment_directory):
     '''Finds catchers in image and writes to new file
     
         timepoint -- the timepoint to find catchers in
@@ -110,10 +110,10 @@ def main():
             tif, blobs = find_catchers(timepoint=1, pos=pos,
                            name_format=name_format, 
                            dest_parent_dir=os.path.join(data_dir, 'catcher_locations'),
-                           experiment_directory=data_dir,
                            channel=channel,
                            channel_number=channel_number,
-                           template = cropped_reference_catcher)
+                           template = cropped_reference_catcher,
+                           experiment_directory=data_dir)
         except:
             raise
 
