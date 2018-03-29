@@ -6,10 +6,6 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as colors 
 from skimage.external.tifffile import tifffile ## just latest version of tifffile
 from skimage import filters
-## For progress bar
-import ipwidgets
-from ipywidgets import FloatProgress
-from IPython.display import display
 import argparse
 from catcher_finder import match_template_to_image
 from catcher_finder import find_catchers
@@ -55,20 +51,15 @@ def main():
     cropped_reference_catcher = np.copy(tif[top:bottom,left:right])
     
     position_ref = os.listdir(data_dir)
-    if '.DS_Store' in postion_ref:
+    if '.DS_Store' in position_ref:
         position_ref.remove('.DS_Store')
     n_positions = len(position_ref)
-    f = FloatProgress(min=0, max=n_positions, description="Finding catchers...")
-    display(f)
     print('\n\n')
     try:
         os.mkdir(os.path.join(data_dir, 'catcher_locations'))
     except OSError:
         pass
     for pos in range(1,n_positions+1):
-        val = pos-1
-        f.description = "Finding catchers...Pos%d" % pos
-        f.value += 1
         try:
             tif, blobs = find_catchers(timepoint=1, pos=pos,
                            name_format=name_format, 
