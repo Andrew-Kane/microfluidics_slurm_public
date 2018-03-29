@@ -30,11 +30,11 @@ parser.add_argument('-p', '--position', required = True,
 args = parser.parse_args()
 data_dir = args.data_dir
 experiment_name = args.experiment_name
-top = args.top
-bottom = args.bottom
-left = args.left
-right = args.right
-position = args.position
+top = int(args.top)
+bottom = int(args.bottom)
+left = int(args.left)
+right = int(args.right)
+position = int(args.position)
 
 def match_template_to_image(image, template, min_distance=25, threshold_rel=0.35):
     """ Uses fourier transforms to find peaks in image and locate catchers
