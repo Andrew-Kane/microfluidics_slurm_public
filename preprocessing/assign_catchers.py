@@ -99,10 +99,16 @@ def main():
     position_ref = os.listdir(data_dir)
     if '.DS_Store' in position_ref:
         position_ref.remove('.DS_Store')
+    else:
+        pass
     if 'stage_positions.STG' in position_ref:
         position_ref.remove('.DS_Store')
+    else:
+        pass
     if 'catcher_locations' in position_ref:
         position_ref.remove('catcher_locations')
+    else:
+        pass
     n_positions = len(position_ref)
     print('\n\n')
     try:
