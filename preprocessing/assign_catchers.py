@@ -97,10 +97,6 @@ def main():
     cropped_reference_catcher = np.copy(tif[top:bottom,left:right])
     
     position_ref = os.listdir(data_dir)
-    if '.DS_Store' in position_ref:
-        position_ref.remove('.DS_Store')
-    else:
-        pass
     if 'stage_positions.STG' in position_ref:
         position_ref.remove('.DS_Store')
     else:
