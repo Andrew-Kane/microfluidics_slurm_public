@@ -22,5 +22,5 @@ module load Anaconda3/2.1.0-fasrc01
 source activate PYTO_SEG_ENV
 module load fiji/1.49j-fasrc01
 
-python3 ~/code/microfluidics_slurm/preprocessing/assign_catchers.py -d $data_dir $experiment_name $top $bottom $left $right $position
+python3 ~/code/microfluidics_slurm/preprocessing/assign_catchers.py -d $data_dir -n $experiment_name -t $top -b $bottom -l $left -r $right -p $position
 
