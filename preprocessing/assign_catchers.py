@@ -54,7 +54,8 @@ def main():
     cropped_reference_catcher = np.copy(tif[top:bottom,left:right])
     
     position_ref = os.listdir(data_dir)
-    position_ref.remove('.DS_Store')
+    if '.DS_Store' in postion_ref:
+        position_ref.remove('.DS_Store')
     n_positions = len(position_ref)
     f = FloatProgress(min=0, max=n_positions, description="Finding catchers...")
     display(f)
