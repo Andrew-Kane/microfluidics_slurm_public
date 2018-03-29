@@ -1,11 +1,6 @@
 import os
-import random ## use to get a random positions for spot checking
-import subprocess
 import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.colors as colors 
 from skimage.external.tifffile import tifffile ## just latest version of tifffile
-from skimage import filters
 import argparse
 from skimage.feature import peak_local_max
 from scipy.signal import fftconvolve
@@ -90,7 +85,7 @@ def main():
     channel = 'BF'
     channel_number = 1
     t = 1
-    name_format = experiment_name + '_Pos%d_%s_t%d.tif'
+    name_format = experiment_name + '_Pos%d_%s_t%d.TIF'
     tif_path = os.path.join(data_dir,
                            'Pos%d' % position,
                             channel,
