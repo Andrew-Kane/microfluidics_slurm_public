@@ -49,7 +49,8 @@ def find_catchers(timepoint,
                   dest_parent_dir,
                   experiment_directory,
                   channel = "BF",
-                  channel_number = 1):
+                  channel_number = 1,
+                  template):
     '''Finds catchers in image and writes to new file
     
         timepoint -- the timepoint to find catchers in
@@ -67,7 +68,7 @@ def find_catchers(timepoint,
     if len(tif.shape) > 2:
         tif = np.max(tif, axis=0)
     blobs = match_template_to_image(image=tif[0:512, 0:512],
-                                    template=cropped_reference_catcher,
+                                    template,
                                     min_distance=100,
                                     threshold_rel=0.20)
     catcher_loc_path = os.path.join(
@@ -109,7 +110,8 @@ def main():
             tif, blobs = find_catchers(timepoint=1, pos=pos,
                            name_format=name_format, 
                            dest_parent_dir=os.path.join(data_dir, 'catcher_locations'),
-                           experiment_directory=data_dir)
+                           experiment_directory=data_dir,
+                           template = cropped_reference_catcher)
         except:
             raise
 
