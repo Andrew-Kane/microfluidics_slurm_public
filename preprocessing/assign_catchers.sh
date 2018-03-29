@@ -7,7 +7,7 @@
 #SBATCH -o %A_%a.out
 #SBATCH -e %A_%a.err
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=nweir@fas.harvard.edu
+#SBATCH --mail-user=andrewkane@g.harvard.edu
 
 data_dir=$1
 experiment_name=$2
