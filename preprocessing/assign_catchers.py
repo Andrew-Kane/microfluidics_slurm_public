@@ -105,12 +105,20 @@ def main():
         position_ref.remove('.DS_Store')
     n_positions = len(position_ref)
     print('\n\n')
-    os.mkdir(os.path.join(data_dir, 'catcher_locations'))
+    try:
+        os.mkdir(os.path.join(data_dir, 'catcher_locations'))
+    except OSError:
+        pass
     for pos in range(1,n_positions+1):
+        try:
             tif, blobs = find_catchers(timepoint=1, pos=pos,
                            name_format=name_format, 
                            dest_parent_dir=os.path.join(data_dir, 'catcher_locations'),
                            experiment_directory=data_dir)
+        except:
+            raise
 
+if __name__ == '__main__':
+    main()
 
 
