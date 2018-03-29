@@ -48,8 +48,8 @@ def find_catchers(timepoint,
                   name_format, # (pos, channel, time, filetype)
                   dest_parent_dir,
                   experiment_directory,
-                  channel = "BF",
-                  channel_number = 1,
+                  channel,
+                  channel_number,
                   template):
     '''Finds catchers in image and writes to new file
     
