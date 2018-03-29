@@ -111,8 +111,8 @@ def main():
                            name_format=name_format, 
                            dest_parent_dir=os.path.join(data_dir, 'catcher_locations'),
                            experiment_directory=data_dir,
-                           channel,
-                           channel_number,
+                           channel=channel,
+                           channel_number=channel_number,
                            template = cropped_reference_catcher)
         except:
             raise
