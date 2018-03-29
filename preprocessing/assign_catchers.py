@@ -7,6 +7,7 @@ import matplotlib.colors as colors
 from skimage.external.tifffile import tifffile ## just latest version of tifffile
 from skimage import filters
 ## For progress bar
+import ipwidgets
 from ipywidgets import FloatProgress
 from IPython.display import display
 import argparse
