@@ -7,6 +7,7 @@ import matplotlib.colors as colors
 from skimage.external.tifffile import tifffile ## just latest version of tifffile
 from skimage import filters
 import argparse
+from microfluidics import catcher_finder
 from catcher_finder import match_template_to_image
 from catcher_finder import find_catchers
 
