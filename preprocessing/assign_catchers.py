@@ -31,7 +31,7 @@ left = int(args.left)
 right = int(args.right)
 position = int(args.position)
 
-def match_template_to_image(image, template, min_distance=25, threshold_rel=0.35):
+def match_template_to_image(template, image, min_distance=25, threshold_rel=0.35):
     """ Uses fourier transforms to find peaks in image and locate catchers
     
         image -- 2d np array in which to look for catchers
@@ -67,8 +67,8 @@ def find_catchers(timepoint,
     tif = tifffile.imread([tif_path])
     if len(tif.shape) > 2:
         tif = np.max(tif, axis=0)
-    blobs = match_template_to_image(image=tif[0:512, 0:512],
-                                    template,
+    blobs = match_template_to_image(template,
+                                    image=tif[0:512, 0:512],
                                     min_distance=100,
                                     threshold_rel=0.20)
     catcher_loc_path = os.path.join(
