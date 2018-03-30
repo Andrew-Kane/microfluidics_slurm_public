@@ -25,7 +25,7 @@ array_l = int(args.array_length)
 
 def main():
     # Primes the script for what channel to do stack registration on.
-    name_format = experiment_name + '_Pos%d_%s_t%d.TIF'
+    name_format = experiment_name + '_Pos%d_c%d%s_t%d.%s'
     os.chdir(data_dir)
     # For different data storage types
     if 'src_img' in os.listdir(data_dir):
