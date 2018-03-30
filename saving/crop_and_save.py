@@ -57,6 +57,10 @@ def main():
         positions.remove('stage_positions.STG')
     if 'catcher_locations' in positions:
         positions.remove('catcher_locations')
+    if 'processed_images' in positions:
+        positions.remove('processed_images')
+    if 'drift_corrections' in positions:
+        positions.remove('drift_corrections')
     positions.sort()
     positions_per_job = int(len(positions)/array_l)
     split_positions_list = []
