@@ -16,5 +16,5 @@ source new-modules.sh
 source activate PYTO_SEG_ENV
 
 cd $img_dir
-python3 ~/code/batch_segmentation/mito_and_pex_seg.py -d $data_dir -n $experiment \
+python3 ~/code/microfluidics_slurm/saving/crop_and_save.py -d $data_dir -n $experiment_name \
 	-a $SLURM_ARRAY_TASK_ID -l $ntasks
