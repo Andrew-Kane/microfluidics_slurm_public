@@ -270,7 +270,7 @@ def main():
                                               catcher_x-crop_window_w//2:catcher_x+crop_window_w//2-28]
 
                 tifffile.imsave(filename=out_path,
-                                data=np.squeeze(to_save))
+                                data=to_save)
             except:
                 pass
             
