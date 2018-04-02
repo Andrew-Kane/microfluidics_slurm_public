@@ -184,7 +184,7 @@ def main():
                 except:
                     pass
             images = np.zeros((timepoints//timestep, 1, 1, default_shape[-2], default_shape[-1]), dtype='uint16')
-            for t in range(0, timepoints, timestep):
+            for t in range(1, timepoints+1, timestep):
                 tif_path = os.path.join(img_dir, 'Pos%d' % pos, channel, name_format % (pos, channel_number, channel, t, "tif"))
                 try:
                     tif = tifffile.imread([tif_path])
