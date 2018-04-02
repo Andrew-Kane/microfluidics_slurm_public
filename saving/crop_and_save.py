@@ -89,7 +89,7 @@ def main():
         crop_window_w = 150
         timestep = 1
 
-        catcher_found_at_t = 0
+        catcher_found_at_t = 1
         
         # open one tiff to find shape
         tif_path = os.path.join(img_dir,
