@@ -273,9 +273,9 @@ def main():
                                        k=-1,
                                        axes=(len(to_save.shape)-1,
                                              len(to_save.shape)-2))
-                file_save = np.squeeze(to_save)
+
                 tifffile.imsave(filename=out_path,
-                                data=file_save)
+                                data=to_save)
             except:
                 pass
             
