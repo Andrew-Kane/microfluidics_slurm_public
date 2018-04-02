@@ -268,11 +268,6 @@ def main():
                     to_save = total_stack[:, :, :, 
                                               catcher_y-crop_window_h//2:catcher_y+crop_window_h//2-28,
                                               catcher_x-crop_window_w//2:catcher_x+crop_window_w//2-28]
-                #if True:
-                 #   to_save = np.rot90(to_save,
-                  #                     k=-1,
-                   #                    axes=(len(to_save.shape)-1,
-                    #                         len(to_save.shape)-2))
 
                 tifffile.imsave(filename=out_path,
                                 data=to_save)
@@ -281,4 +276,3 @@ def main():
             
 if __name__ == '__main__':
     main()
-
