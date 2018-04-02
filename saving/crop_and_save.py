@@ -110,7 +110,6 @@ def main():
             raise ValueError('The tif is not in a shape that we expected')
         
         for t in range(0, timepoints, timestep):
-            x = t-1
             tif_path = os.path.join(img_dir,
                                     'Pos%d' % pos,
                                     channel,
@@ -129,7 +128,7 @@ def main():
                 tif = np.zeros(default_shape)
                 print("Unable to read: ", name_format % (pos, channel_number, channel, t, "TIF"))
             try:
-                to_align[x//timestep, :, 0, :, :] = tif[0:default_shape[-2], 0:default_shape[-1]]
+                to_align[t//timestep, :, 0, :, :] = tif[0:default_shape[-2], 0:default_shape[-1]]
             except IndexError:
                 pass
         print("Aligning...", end = "")
