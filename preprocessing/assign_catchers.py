@@ -87,10 +87,18 @@ def main():
     channel_number = 1
     t = 1
     name_format = experiment_name + '_Pos%d_%s_t%d.TIF'
-    tif_path = os.path.join(data_dir,
-                           'Pos%d' % position,
-                            channel,
-                            name_format % (position, "c%d%s" % (channel_number, channel), t))
+    os.chdir(data_dir)
+    if 'src_img' in os.listdir(data_dir):
+        tif_path = os.path.join(data_dir,
+                                'src_img',
+                               'Pos%d' % position,
+                                channel,
+                                name_format % (position, "c%d%s" % (channel_number, channel), t))
+    else:
+        tif_path = os.path.join(data_dir,
+                               'Pos%d' % position,
+                                channel,
+                                name_format % (position, "c%d%s" % (channel_number, channel), t))
     tif = tifffile.imread([tif_path])
     if len(tif.shape) > 2:
         tif = np.max(tif, axis = 0)
