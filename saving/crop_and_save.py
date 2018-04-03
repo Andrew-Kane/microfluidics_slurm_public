@@ -45,8 +45,8 @@ def main():
         pass
     # Determines which positions to align and crop in this node.
     if 'src_img'in os.listdir(data_dir):
-        os.chdir(os.path.join(img_dir,'src_img'))
-        positions = os.listdir(os.path.join(img_dir,'src_img'))
+        os.chdir(os.path.join(img_dir))
+        positions = os.listdir(os.path.join(img_dir))
     else:
         positions = os.listdir(img_dir)
     if '.DS_Store' in positions:
