@@ -69,8 +69,8 @@ def find_catchers(timepoint,
         tif = np.max(tif, axis=0)
     blobs = match_template_to_image(template,
                                     image=tif[0:512, 0:512],
-                                    min_distance=100,
-                                    threshold_rel=0.20)
+                                    min_distance=25,
+                                    threshold_rel=0.35)
     catcher_loc_path = os.path.join(
         dest_parent_dir,
         (name_format.split(".")[0]+".catcher_loc") %(pos, 
