@@ -165,7 +165,7 @@ def main():
             channels.remove('.DS_Store')
         if '._.DS_Store' in channels:
             channels.remove('._.DS_Store')
-        os.listdir(os.path.join(data_dir, "Pos%d" % pos))
+        os.listdir(os.path.join(img_dir, "Pos%d" % pos))
         channels = sorted(channels)
         channels.pop(channels.index("BF"))
         channels_to_omit = []
