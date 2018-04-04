@@ -85,8 +85,8 @@ def main():
                                                      'Pos%d' % pos, 
                                                      channel)))
         timepoints = num_timepoints
-        crop_window_h = 125
-        crop_window_w = 125
+        crop_window_h = 150
+        crop_window_w = 150
         timestep = 1
 
         catcher_found_at_t = 1
