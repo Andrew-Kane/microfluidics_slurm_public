@@ -272,8 +272,8 @@ def main():
                     to_save = total_stack[:, :, :, 
                                               catcher_y-crop_window_h//2:catcher_y+crop_window_h//2,
                                               0:catcher_x+crop_window_w//2]
-                if catcher_y-crop_window_h > 512:
-                    if catcher_x-crop_window_w > 512:
+                if catcher_y+crop_window_h > 512:
+                    if catcher_x+crop_window_w > 512:
                         to_save = total_stack[:, :, :, 
                                                   catcher_y-crop_window_h//2:512,
                                                   catcher_x-crop_window_w//2:512]
@@ -281,7 +281,7 @@ def main():
                         to_save = total_stack[:, :, :, 
                                                   catcher_y-crop_window_h//2:512,
                                                   catcher_x-crop_window_w//2:catcher_x+crop_window_w//2]
-                elif catcher_x-crop_window_w > 512:
+                elif catcher_x+crop_window_w > 512:
                     to_save = total_stack[:, :, :, 
                                               catcher_y-crop_window_h//2:catcher_y+crop_window_h//2,
                                               catcher_x-crop_window_w//2:512]
