@@ -85,8 +85,8 @@ def main():
                                                      'Pos%d' % pos, 
                                                      channel)))
         timepoints = num_timepoints
-        crop_window_h = 200
-        crop_window_w = 200
+        crop_window_h = 175
+        crop_window_w = 175
         timestep = 1
 
         catcher_found_at_t = 1
@@ -259,41 +259,14 @@ def main():
                 catcher_x, catcher_y = [round(float(i)) for i in catcher]
                 cropped_image_name = "Pos%d_x%d_y%d.tif" % (pos, catcher_x, catcher_y)
                 out_path = os.path.join(processed_dir, cropped_image_name)
-                if catcher_y-crop_window_h < 0:
-                    if catcher_x-crop_window_w < 0:
-                        to_save = total_stack[:, :, :, 
-                                                  0:catcher_y+crop_window_h//2,
-                                                  0:catcher_x+crop_window_w//2]
-                    else:
-                        to_save = total_stack[:, :, :, 
-                                                  0:catcher_y+crop_window_h//2,
-                                                  catcher_x-crop_window_w//2:catcher_x+crop_window_w//2]
-                elif catcher_x-crop_window_w < 0:
+                try:
                     to_save = total_stack[:, :, :, 
                                               catcher_y-crop_window_h//2:catcher_y+crop_window_h//2,
-                                              0:catcher_x+crop_window_w//2]
-                if catcher_y+crop_window_h > 512:
-                    if catcher_x+crop_window_w > 512:
-                        to_save = total_stack[:, :, :, 
-                                                  catcher_y-crop_window_h//2:512,
-                                                  catcher_x-crop_window_w//2:512]
-                    else:
-                        to_save = total_stack[:, :, :, 
-                                                  catcher_y-crop_window_h//2:512,
-                                                  catcher_x-crop_window_w//2:catcher_x+crop_window_w//2]
-                elif catcher_x+crop_window_w > 512:
+                                              catcher_x-crop_window_w//2:catcher_x+crop_window_w//2]
+                except: 
                     to_save = total_stack[:, :, :, 
-                                              catcher_y-crop_window_h//2:catcher_y+crop_window_h//2,
-                                              catcher_x-crop_window_w//2:512]
-                else:
-                    try:
-                        to_save = total_stack[:, :, :, 
-                                                  catcher_y-crop_window_h//2:catcher_y+crop_window_h//2,
-                                                  catcher_x-crop_window_w//2:catcher_x+crop_window_w//2]
-                    except: 
-                        to_save = total_stack[:, :, :, 
-                                                  catcher_y-crop_window_h//2:catcher_y+crop_window_h//2-28,
-                                                  catcher_x-crop_window_w//2:catcher_x+crop_window_w//2-28]
+                                              catcher_y-crop_window_h//2:catcher_y+crop_window_h//2-28,
+                                              catcher_x-crop_window_w//2:catcher_x+crop_window_w//2-28]
 
                 tifffile.imsave(filename=out_path,
                                 data=np.squeeze(to_save))
