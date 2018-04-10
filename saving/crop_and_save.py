@@ -174,8 +174,8 @@ def main():
         for channel in channels:
             if channel in channels_to_omit:
                 continue
-            if len(os.listdir(os.path.join(img_dir, "Pos%d" % pos, channel))) < 10:
-                continue
+           # if len(os.listdir(os.path.join(img_dir, "Pos%d" % pos, channel))) < 10:
+            #    continue
             for i in range(100):
                 try:
                     channel_number = int(os.listdir(os.path.join(img_dir, "Pos%d" % pos, channel))[0].split("_")[3][1])
@@ -183,8 +183,8 @@ def main():
                 except:
                     pass
             images = np.zeros((timepoints//timestep, 1, 1, default_shape[-2], default_shape[-1]), dtype='uint16')
-            for t in range(1, timepoints+1, timestep):
-                tif_path = os.path.join(img_dir, 'Pos%d' % pos, channel, name_format % (pos, channel_number, channel, t, "tif"))
+            for t in range(0, timepoints, timestep):
+                tif_path = os.path.join(img_dir, 'Pos%d' % pos, channel, name_format % (pos, channel_number, channel, t+1, "TIF"))
                 try:
                     tif = tifffile.imread([tif_path])
                     if len(tif.shape)==2:
