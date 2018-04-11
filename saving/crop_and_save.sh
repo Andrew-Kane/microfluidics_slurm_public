@@ -3,7 +3,7 @@
 #SBATCH -n 1
 #SBATCH -t 0-04:00
 #SBATCH -p serial_requeue
-#SBATCH --mem-per-cpu=1500
+#SBATCH --mem-per-cpu=30000
 #SBATCH -o %A_%a.out
 #SBATCH -e %A_%a.err
 #SBATCH --mail-type=ALL
