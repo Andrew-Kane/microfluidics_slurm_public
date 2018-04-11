@@ -11,10 +11,12 @@
 
 data_dir=$1
 experiment_name=$2
-ntasks=$3
+projection_type=$3
+combine=$4
+ntasks=$5
 source new-modules.sh
 source activate PYTO_SEG_ENV
 
 cd $img_dir
 python3 ~/code/microfluidics_slurm/saving/crop_and_save.py -d $data_dir -n $experiment_name \
-	-a $SLURM_ARRAY_TASK_ID -l $ntasks
+	-p $projection_type -c $combine -a $SLURM_ARRAY_TASK_ID -l $ntasks

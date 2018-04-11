@@ -12,14 +12,21 @@ parser.add_argument('-d', '--data_dir', required = True,
                     help = 'directory containing images with catchers to identify.')
 parser.add_argument('-n', '--experiment_name', required = True,
                     help = 'name of files before channel, position and time.')
+parser.add_argument('-p', '--projection_type', required = True,
+                    help = 'whether to project for combining images.')
+parser.add_argument('-c', '--combine', required = True,
+                    help = 'whether to combine different channels into one tif.')
 parser.add_argument('-a', '--array_number', required = True,
                     help = 'the job number within the job array.')
 parser.add_argument('-l', '--array_length', required = True,
                     help = 'length of the job array.')
 
+
 args = parser.parse_args()
 data_dir = args.data_dir
 experiment_name = args.experiment_name
+projection_type = args.projection_type
+combine = args.combine
 array_n = int(args.array_number)
 array_l = int(args.array_length)
 
@@ -102,7 +109,7 @@ def main():
         if len(default_shape)==2:
             to_align = np.zeros((timepoints//timestep, 1, 1,default_shape[-2], default_shape[-1]), dtype='uint16') ## create an empty array to hold all of the images
         elif len(default_shape)==3:
-            if "{projection_type}" == 'None':
+            if projection_type == 'None':
                 to_align = np.zeros((timepoints//timestep, default_shape[0], 1, default_shape[-2], default_shape[-1]), dtype='uint16') ## create an empty array to hold all of the images
             else:
                 to_align = np.zeros((timepoints//timestep, 1, 1,default_shape[-2], default_shape[-1]), dtype='uint16') ## create an empty array to hold all of the images
@@ -116,13 +123,13 @@ def main():
                                     name_format % (pos, channel_number, channel, t+1, "TIF"))
             try:
                 tif = tifffile.imread([tif_path])
-                if "{projection_type}" == 'max':
+                if projection_type == 'max':
                     tif = np.max(tif, axis=0)
                     tif = np.expand_dims(tif, axis=0)
-                elif "{projection_type}" == 'sum':
+                elif projection_type == 'sum':
                     tif = np.sum(tif, axis=0)
                     tif = np.expand_dims(tif, axis=0)
-                elif "{projection_type}" == 'None':
+                elif projection_type == 'None':
                     pass
             except ValueError:
                 tif = np.zeros(default_shape)
@@ -189,13 +196,13 @@ def main():
                     tif = tifffile.imread([tif_path])
                     if len(tif.shape)==2:
                         tif = np.expand_dims(tif, axis=0)
-                    if "{projection_type}" == 'max':
+                    if projection_type == 'max':
                         tif = np.max(tif, axis=0)
                         tif = np.expand_dims(tif, axis=0)
-                    elif "{projection_type}" == 'sum':
+                    elif projection_type == 'sum':
                         tif = np.sum(tif, axis=0)
                         tif = np.expand_dims(tif, axis=0)
-                    elif "{projection_type}" == 'None':
+                    elif projection_type == 'None':
                         pass
                     if tif.shape[0] > images.shape[1]:
                         to_pad = np.zeros((timepoints//timestep,
@@ -254,24 +261,69 @@ def main():
         print("Done")
         
         ## For catcher in catchers, crop, and saveout tif
-        for catcher in catchers:
-            try:
-                catcher_x, catcher_y = [round(float(i)) for i in catcher]
-                cropped_image_name = "Pos%d_x%d_y%d.tif" % (pos, catcher_x, catcher_y)
-                out_path = os.path.join(processed_dir, cropped_image_name)
+        if combine == 'combine':
+            for catcher in catchers:
                 try:
-                    to_save = total_stack[:, :, :, 
-                                              catcher_y-crop_window_h//2:catcher_y+crop_window_h//2,
-                                              catcher_x-crop_window_w//2:catcher_x+crop_window_w//2]
-                except: 
-                    to_save = total_stack[:, :, :, 
-                                              catcher_y-crop_window_h//2:catcher_y+crop_window_h//2-28,
-                                              catcher_x-crop_window_w//2:catcher_x+crop_window_w//2-28]
+                    catcher_x, catcher_y = [round(float(i)) for i in catcher]
+                    cropped_image_name = "Pos%d_x%d_y%d.tif" % (pos, catcher_x, catcher_y)
+                    out_path = os.path.join(processed_dir, cropped_image_name)
+                    try:
+                        to_save = total_stack[:, :, :, 
+                                                  catcher_y-crop_window_h//2:catcher_y+crop_window_h//2,
+                                                  catcher_x-crop_window_w//2:catcher_x+crop_window_w//2]
+                    except: 
+                        to_save = total_stack[:, :, :, 
+                                                  catcher_y-crop_window_h//2:catcher_y+crop_window_h//2-28,
+                                                  catcher_x-crop_window_w//2:catcher_x+crop_window_w//2-28]
+    
+                    tifffile.imsave(filename=out_path,
+                                    data=np.squeeze(to_save))
+                except:
+                    pass
+        elif combine == 'separate':
+            for catcher in catchers:
+                try:
+                    catcher_x, catcher_y = [round(float(i)) for i in catcher]
+                    cropped_image_name = "Pos%d_x%d_y%d_BF.tif" % (pos, catcher_x, catcher_y)
+                    out_path = os.path.join(processed_dir, cropped_image_name)
+                    try:
+                        to_save = total_stack[:, 0, 0, 
+                                                  catcher_y-crop_window_h//2:catcher_y+crop_window_h//2,
+                                                  catcher_x-crop_window_w//2:catcher_x+crop_window_w//2]
+                    except: 
+                        to_save = total_stack[:, 0, 0, 
+                                                  catcher_y-crop_window_h//2:catcher_y+crop_window_h//2-28,
+                                                  catcher_x-crop_window_w//2:catcher_x+crop_window_w//2-28]
 
-                tifffile.imsave(filename=out_path,
-                                data=np.squeeze(to_save))
-            except:
-                pass
+                    tifffile.imsave(filename=out_path,
+                                    data=np.squeeze(to_save))
+                except:
+                    pass
+            for channel in channels:
+                for i in range(100):
+                    try:
+                        channel_number = int(os.listdir(os.path.join(data_dir, "Pos%d" % pos, channel))[0].split("_")[3][1])
+                        break
+                    except:
+                        pass
+                for catcher in catchers:
+                    try:
+                        catcher_x, catcher_y = [round(float(i)) for i in catcher]
+                        cropped_image_name = "Pos%d_x%d_y%d_%s.tif" % (pos, catcher_x, catcher_y, channel)
+                        out_path = os.path.join(processed_dir, cropped_image_name)
+                        try:
+                            to_save = total_stack[:, :, channel_number-1, 
+                                                      catcher_y-crop_window_h//2:catcher_y+crop_window_h//2,
+                                                      catcher_x-crop_window_w//2:catcher_x+crop_window_w//2]
+                        except: 
+                            to_save = total_stack[:, :, channel_number-1, 
+                                                      catcher_y-crop_window_h//2:catcher_y+crop_window_h//2-28,
+                                                      catcher_x-crop_window_w//2:catcher_x+crop_window_w//2-28]
+
+                        tifffile.imsave(filename=out_path,
+                                        data=np.squeeze(to_save))
+                    except:
+                        pass
             
 if __name__ == '__main__':
     main()
