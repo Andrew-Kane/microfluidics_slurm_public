@@ -261,7 +261,7 @@ def main():
         print("Done")
         
         ## For catcher in catchers, crop, and saveout tif
-        if combine = 'combine':
+        if combine == 'combine':
             for catcher in catchers:
                 try:
                     catcher_x, catcher_y = [round(float(i)) for i in catcher]
@@ -280,7 +280,7 @@ def main():
                                     data=np.squeeze(to_save))
                 except:
                     pass
-        elif combine = 'separate':
+        elif combine == 'separate':
             for catcher in catchers:
                 try:
                     catcher_x, catcher_y = [round(float(i)) for i in catcher]
