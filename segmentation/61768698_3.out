@@ -1,0 +1,430 @@
+Namespace(array_length='5', array_number='3', img_dir='/n/denicfs/users/akane/microscopy/microfluidics/181009_AJKX113/processed_images/', threshold='85')
+Segment images:
+['Pos44_x333_y246_Segment.tif']
+SEGMENTING Pos44_x333_y246_Segment.tif
+reading Pos44_x333_y246_Segment.tif ...
+raw image imported.
+thresholding...
+filling holes...
+2d holes filled.
+binary processing complete.
+generating distance map...
+distance map complete.
+smoothing distance map...
+distance map smoothed.
+identifying maxima...
+maxima identified.
+watershedding...
+raw watershedding complete.
+cleaning up cells...
+    number of iterations = 2
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 4
+    number of iterations = 2
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 3
+    number of iterations = 2
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 3
+    number of iterations = 1
+    number of iterations = 3
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 7
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 3
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 5
+    number of iterations = 2
+    number of iterations = 4
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 7
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 2
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 3
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+    number of iterations = 1
+cell cleanup complete.
+SEGMENTATION OPERATION COMPLETE.
+time elapsed: 55.979538917541504 seconds
+determining distances...
+distances determined.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+Maximum size does not agree with minimum distance! Mother may be incorrect, assuming min distance.
+eliminating all but mother cell...
+mothers produced.
+creating SegmentObject...
+creating output directory...
