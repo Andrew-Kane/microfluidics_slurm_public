@@ -17,7 +17,7 @@ parser.add_argument('-n', '--experiment_name', required = True,
                     help = 'name of files before channel, position and time.')
 args = parser.parse_args()
 directory = args.directory
-experiment_name = args.experiment_name
+experiment = args.experiment_name
 
 def main():
     os.chdir(directory)
