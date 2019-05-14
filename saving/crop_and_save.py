@@ -189,7 +189,7 @@ def main():
                     break
                 except:
                     pass
-            images = np.zeros((timepoints//timestep, 1, 1, default_shape[-2], default_shape[-1]), dtype='uint16')
+            images = np.zeros((timepoints//timestep, 1, 1, default_shape[-2], default_shape[-1]), dtype='float32')
             for t in range(0, timepoints, timestep):
                 tif_path = os.path.join(img_dir, 'Pos%d' % pos, channel, name_format % (pos, channel_number, channel, t+1, "TIF"))
                 try:
@@ -209,11 +209,13 @@ def main():
                                            tif.shape[0]-images.shape[1],
                                             1,
                                             default_shape[-2], 
-                                            default_shape[-1]), dtype='uint16')
+                                            default_shape[-1]), dtype='float32')
                         images = np.concatenate((images, to_pad), axis=1)
                 except ValueError:
                     tif = np.zeros(tif.shape)
                     print("Unable to read: ", name_format % (pos, channel_number, channel, t, "tif"))
+                if channel == 'Segment':
+                    tif = tif*100
                 try:
                     images[t//timestep, :, 0, :,:] = tif[:, :, :]
                 except IndexError:
@@ -302,7 +304,7 @@ def main():
             for channel in channels:
                 for i in range(100):
                     try:
-                        channel_number = int(os.listdir(os.path.join(data_dir, "Pos%d" % pos, channel))[0].split("_")[3][1])
+                        channel_number = int(os.listdir(os.path.join(img_dir, "Pos%d" % pos, channel))[0].split("_")[3][1])
                         break
                     except:
                         pass
@@ -319,6 +321,10 @@ def main():
                             to_save = total_stack[:, :, channel_number-1, 
                                                       catcher_y-crop_window_h//2:catcher_y+crop_window_h//2-28,
                                                       catcher_x-crop_window_w//2:catcher_x+crop_window_w//2-28]
+                        if channel == 'Segment':
+                            copy = np.copy(to_save)
+                            copy[copy>150] = 0
+                            to_save = copy
 
                         tifffile.imsave(filename=out_path,
                                         data=np.squeeze(to_save))
