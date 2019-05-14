@@ -23,16 +23,18 @@ def main():
     os.chdir(directory)
     #Identifies all .tif files and stores them in img_files variable.
     img_files = [f for f in os.listdir() if '.tif' in f.lower()]
+    img_files.sort()
     img_files = tuple(img_files)
     #For confirmation, prints list of stages
     print('list of image files:')
     print(img_files)
     #Breaks tif video files into multiple tifs for each timepoint and renames them
     for i in range(len(img_files)):
+        print('Processing position image '+img_files[i])
         tiff = tifffile.imread(img_files[i])
         pos= i+1
         for j in range(len(tiff)):
-            time = i+1
+            time = j+1
             tifffile.imsave(filename=directory+experiment+'_s%d'%pos+'_t%d.TIF'%time,
                                         data=tiff[j])
         os.remove(img_files[i])
