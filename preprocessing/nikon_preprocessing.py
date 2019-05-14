@@ -31,7 +31,7 @@ def main():
     for i in range(len(img_files)):
         tiff = tifffile.imread(img_files[i])
         for j in range(len(tiff)):
-            tifffile.imsave(filename=out_path+experiment+'_s%d'%i+'_t%d.TIF'%j,
+            tifffile.imsave(filename=directory+experiment+'_s%d'%i+'_t%d.TIF'%j,
                                         data=tiff[i])
         os.remove(img_files[i])
 
