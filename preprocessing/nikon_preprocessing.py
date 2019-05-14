@@ -30,8 +30,10 @@ def main():
     #Breaks tif video files into multiple tifs for each timepoint and renames them
     for i in range(len(img_files)):
         tiff = tifffile.imread(img_files[i])
+        pos= i+1
         for j in range(len(tiff)):
-            tifffile.imsave(filename=directory+experiment+'_s%d'%i+1+'_t%d.TIF'%j,
+            time = i+1
+            tifffile.imsave(filename=directory+experiment+'_s%d'%pos+'_t%d.TIF'%time,
                                         data=tiff[j])
         os.remove(img_files[i])
 
