@@ -61,11 +61,13 @@ def main():
                                      'gfp_stdev': [],
                                      'lifespan': [],
                                      'age':[],
-                                     'cell_cycle':[]
+                                     'cell_cycle':[],
+                                     'budding':[]
                                     })
 
     #Obtain pickles and fluorescence images that they correspond to.
     pickles = get_pickle_set(img_dir, array_l, array_n)
+    print(pickles)
     os.chdir(img_dir + '/pickles')
     os.listdir()
     pickle_list = [p for p in os.listdir() if '.pickle' in p]
@@ -74,7 +76,7 @@ def main():
 
     for p in pickles:
         os.chdir(img_dir + '/pickles')
-        cfile = open(pickles[0],'rb')
+        cfile = open(p,'rb')
         cpickle = pickle.load(cfile)
         print('current segmented object image: ' + cpickle.filename)
         (pickle_id, pickle_channel) = get_img_ids([cpickle.filename],
@@ -95,10 +97,26 @@ def main():
         age = 0
         new_lifespan = 'no'
         for frame in range(len(cpickle.mother_nums)):
+            print(frame)
             gfp_mean = {}
             volumes_v2 = {}
             gfp_stdev = {}
-            if len(cpickle.mother_nums[frame]) == 0:
+            print(lifespans['buds_counted'][lifespans['filename'] == annotation_id])
+            lifespan = int(lifespans['buds_counted'][lifespans['filename'] == annotation_id])
+            if annotations[annotation_id]['budding_events'][frame] == 'n':
+                new_lifespan = 'yes'
+                cell_cycle = 0
+                age = 0
+            elif annotations[annotation_id]['budding_events'][frame] == 'b':
+                if new_lifespan == 'yes':
+                    cell_cycle = 0
+                    age += 1
+            elif annotations[annotation_id]['budding_events'][frame] == 'x':
+                break
+            else:
+                if new_lifespan == 'yes':
+                    cell_cycle += 1
+            if new_lifespan == 'no':
                 pass
             else:
                 print('     current frame number: ' + str(frame))
@@ -108,20 +126,6 @@ def main():
                             gfp_mean[obj] = np.mean(gfp_img[frame][cpickle.mother_cells[frame] == obj])
                             volumes_v2[obj] = len(np.flatnonzero(cpickle.mother_cells[frame] == obj))
                             gfp_stdev[obj] = np.std(gfp_img[frame_num][cpickle.mother_cells[frame] == obj])
-                lifespan = int(lifespans['buds_counted'][lifespans['filename'] == annotation_id])
-                if annotations[annotation_id]['budding_events'][frame] == 'n':
-                    new_lifespan = 'yes'
-                    cell_cycle = 0
-                    age = 0
-                elif annotations[annotation_id]['budding_events'][frame] == 'b':
-                    if new_lifespan == 'yes':
-                        cell_cycle = 0
-                    age += 1
-                elif annotations[annotation_id]['budding_events'][frame] == 'x':
-                    break
-                else:
-                    if new_lifespan == 'yes':
-                        cell_cycle += 1
                 currframe_data = pd.DataFrame({'img': pd.Series(data =
                                                               [cpickle.filename]*len(cpickle.mother_nums[frame]),
                                                               index = cpickle.mother_nums[frame]),
@@ -136,9 +140,10 @@ def main():
                                              'frame_num':frame_num,
                                                'lifespan': lifespan,
                                                'age': age,
-                                               'cell_cycle':cell_cycle
+                                               'cell_cycle':cell_cycle,
+                                               'budding':annotations[annotation_id]['budding_events'][frame]
                                             })
-            output_frame = pd.concat([output_frame, currframe_data])
+                output_frame = pd.concat([output_frame, currframe_data])
     print('')
     print('-----------------------------------------------------------------')
     print('-----------------------------------------------------------------')
