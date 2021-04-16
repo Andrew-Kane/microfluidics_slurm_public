@@ -108,7 +108,6 @@ def main():
             gfp_mean = {}
             volumes_v2 = {}
             gfp_stdev = {}
-<<<<<<< HEAD
             print(lifespans['buds_counted'][lifespans['filename'] == annotation_id])
             lifespan = int(lifespans['buds_counted'][lifespans['filename'] == annotation_id])
             if annotations[annotation_id]['budding_events'][frame] == 'n':
@@ -125,10 +124,8 @@ def main():
                 if new_lifespan == 'yes':
                     cell_cycle += 1
             if new_lifespan == 'no':
-=======
             #Ignores frames with no cells present
             if len(cpickle.mother_nums[frame]) == 0:
->>>>>>> b6fe5cc41337b8e3fdb3d8eab43cac4a14435d37
                 pass
             else:
                 print('     current frame number: ' + str(frame))
@@ -138,8 +135,6 @@ def main():
                             gfp_mean[obj] = np.mean(gfp_img[frame][cpickle.mother_cells[frame] == obj])
                             volumes_v2[obj] = len(np.flatnonzero(cpickle.mother_cells[frame] == obj))
                             gfp_stdev[obj] = np.std(gfp_img[frame_num][cpickle.mother_cells[frame] == obj])
-<<<<<<< HEAD
-=======
                 lifespan = int(lifespans['buds_counted'][lifespans['filename'] == annotation_id])
                 #n indicates new lifespan in the json annotated file
                 if annotations[annotation_id]['budding_events'][frame] == 'n':
@@ -155,7 +150,6 @@ def main():
                 else:
                     if new_lifespan == 'yes':
                         cell_cycle += 1
->>>>>>> b6fe5cc41337b8e3fdb3d8eab43cac4a14435d37
                 currframe_data = pd.DataFrame({'img': pd.Series(data =
                                                               [cpickle.filename]*len(cpickle.mother_nums[frame]),
                                                               index = cpickle.mother_nums[frame]),
