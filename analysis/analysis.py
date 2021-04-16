@@ -31,6 +31,11 @@ array_n = int(args.array_number)
 array_l = int(args.array_length)
 
 def main():
+  '''Creates a dataframe for lifepsans by taking annotaed json file 
+  containing yeast budding events, masks generated from DeepCell 
+  segmentation and cleanup, and fluorescence images. Dataframe contains
+  information for each frame about the age of the yeast, the mother
+  cell's fluorescence intensity, volume, age, and final lifespan.'''
     #Open annotation file for budding events and cell deaths.
     json_file = os.path.join(img_dir,str(experiment_name)+'.json')
     with open(json_file, 'r') as tmp:
@@ -75,6 +80,7 @@ def main():
     gfp_ids = {v: k for k, v in gfp_ids.items()}
 
     for p in pickles:
+      #Opens pickle files for applying segmentation to fluorescence images.
         os.chdir(img_dir + '/pickles')
         cfile = open(p,'rb')
         cpickle = pickle.load(cfile)
@@ -96,11 +102,13 @@ def main():
         cell_cycle = 0
         age = 0
         new_lifespan = 'no'
+        #Goes through each frame in a lifespan and determines GFP intensity and volume of the mother cell.
         for frame in range(len(cpickle.mother_nums)):
             print(frame)
             gfp_mean = {}
             volumes_v2 = {}
             gfp_stdev = {}
+<<<<<<< HEAD
             print(lifespans['buds_counted'][lifespans['filename'] == annotation_id])
             lifespan = int(lifespans['buds_counted'][lifespans['filename'] == annotation_id])
             if annotations[annotation_id]['budding_events'][frame] == 'n':
@@ -117,6 +125,10 @@ def main():
                 if new_lifespan == 'yes':
                     cell_cycle += 1
             if new_lifespan == 'no':
+=======
+            #Ignores frames with no cells present
+            if len(cpickle.mother_nums[frame]) == 0:
+>>>>>>> b6fe5cc41337b8e3fdb3d8eab43cac4a14435d37
                 pass
             else:
                 print('     current frame number: ' + str(frame))
@@ -126,6 +138,24 @@ def main():
                             gfp_mean[obj] = np.mean(gfp_img[frame][cpickle.mother_cells[frame] == obj])
                             volumes_v2[obj] = len(np.flatnonzero(cpickle.mother_cells[frame] == obj))
                             gfp_stdev[obj] = np.std(gfp_img[frame_num][cpickle.mother_cells[frame] == obj])
+<<<<<<< HEAD
+=======
+                lifespan = int(lifespans['buds_counted'][lifespans['filename'] == annotation_id])
+                #n indicates new lifespan in the json annotated file
+                if annotations[annotation_id]['budding_events'][frame] == 'n':
+                    new_lifespan = 'yes'
+                    cell_cycle = 0
+                    age = 0
+                elif annotations[annotation_id]['budding_events'][frame] == 'b':
+                    if new_lifespan == 'yes':
+                        cell_cycle = 0
+                    age += 1
+                elif annotations[annotation_id]['budding_events'][frame] == 'x':
+                    break
+                else:
+                    if new_lifespan == 'yes':
+                        cell_cycle += 1
+>>>>>>> b6fe5cc41337b8e3fdb3d8eab43cac4a14435d37
                 currframe_data = pd.DataFrame({'img': pd.Series(data =
                                                               [cpickle.filename]*len(cpickle.mother_nums[frame]),
                                                               index = cpickle.mother_nums[frame]),
@@ -195,6 +225,7 @@ def get_img_ids(img_files, return_channel = False):
         return((fname_id_dict, channel_dict))
     
 def get_lifespan_from_annotation(annotation_string):
+  '''Gets lifespan from json annoatation file. '''
         lifespans = "".join([i for i in annotation_string if i in ['n','b', 'w', 'x']]).split("n")
         for i in lifespans:
             i.rstrip('b')
