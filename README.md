@@ -9,9 +9,11 @@ __Note:__ These scripts are currently designed for running on Andrew's personal 
 These scripts was written to correlate _S. cerevisiae_ lifespan and age with fluorescence intensity given by whatever reporter the user has provided.
 
 The scripts take raw image files obtained on a microscope and crop them down to individual catchers using proprietary code provided by Calico Labs which is not provided here. Cells segmented by [DeepCell](https://github.com/CovertLab/DeepCell/) are used to generate masks:
+
 ![image](https://user-images.githubusercontent.com/29231831/115124326-85de2500-9f8f-11eb-8a55-eb53ecfa9f11.png)
 
-Assuming the mother cell is the center cell with the largest volume (this should be confirmed by the user and only suitable images should be provided), a mother cell mask is generated and applied to fluorescent images. Intensity of fluorescence from these masked images is combined with an annotation json file (created using proprietary code provided by Calico Labs which is not provided here) and output into one dataframe.
+Assuming the mother cell is the center cell with the largest volume (this should be confirmed by the user and only suitable images should be provided), a mother cell mask is generated and applied to fluorescent images. Intensity of fluorescence from these masked images is combined with an annotation json file (created using proprietary code provided by Calico Labs which is not provided here) and output into one dataframe:
+
 ![image](https://user-images.githubusercontent.com/29231831/115124428-32200b80-9f90-11eb-852c-287f55328228.png)
 
 
